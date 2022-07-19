@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+
+
+Parameters:
+  s3bucketname:
+    Description: Please provide a unique lowercase letter or num only bucket name to use.
+    Type: String
+    AllowedPattern: "[a-z][a-z0-9]*"
+    ConstraintDescription : "must begin with a letter and contain only lower case alphanumeric characters."
+
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref s3bucketname
+Outputs:
+  BucketName:
+    Value: !Ref 'S3Bucket'
+    Description: Name of the sample Amazon S3 bucket    
